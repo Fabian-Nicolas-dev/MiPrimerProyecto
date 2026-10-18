@@ -3,12 +3,13 @@ import java.beans.JavaBean;
 public class DesafioControl {
     public static void main(String[] args) {
 
-        int velocidad = 140;
+        boolean tieneComputadora = true;
+        int experienciaMeses = 3;
 
-        if (velocidad > 130) {
-            System.out.println("Velocidad Permitida. Buen viaje!");
+        if (tieneComputadora && experienciaMeses > 5) {
+            System.out.println("¡CONTRATADO PARA HOME OFFICE!");
         } else {
-            System.out.println("¡MULTA POR EXCESO DE VELOCIDAD!");
+            System.out.println("No cumple los requisitos mínimos.");
         }
 
     }
