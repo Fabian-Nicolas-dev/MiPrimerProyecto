@@ -6,8 +6,12 @@ public class DesafioControl {
 
         Scanner teclado = new Scanner(System.in);
 
-        double[] precios = {1500.50, 2300.0, 850.0, 4100.20};
-        System.out.println("El precio del tercer producto es: $" + precios[2]);
+        String[] equipo = {"Fabián", "Carlos", "Ana"};
+
+                for (int i = 0; i <= 2; i++ ) {
+                    System.out.println("Programador contratado: " + i + equipo[i]);
+
+                }
 
         }
 }
