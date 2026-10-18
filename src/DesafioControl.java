@@ -1,15 +1,17 @@
-import java.beans.JavaBean;
+import java.util.Scanner;
 
 public class DesafioControl {
     public static void main(String[] args) {
 
-        boolean sabeJava = true;
-        int nivelIngles = 4;
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("¿Desde qué número empieza la cuenta regresiva?: ");
 
-        if (sabeJava && nivelIngles >= 3) {
-            System.out.println("Bienvenido a la empresa. Laburás desde casa.");
-        } else {
-            System.out.println("No cumple con perfil requerido");
+        int contador = teclado.nextInt();
+        while (contador > 0) {
+            System.out.println("Tiempo restante: " + contador);
+            contador = contador - 1;
         }
+        System.out.println("¡¡¡BOOM!!! Tiempo cumplido.");
+
     }
 }
