@@ -6,15 +6,8 @@ public class DesafioControl {
 
         Scanner teclado = new Scanner(System.in);
 
-        double sumaNotas = 0.0;
-
-        for (int i = 1; i <= 4; i++) {
-            System.out.println("Ingrese la nota del mes " + i + ": ");
-            double nota = teclado.nextDouble();
-            sumaNotas = sumaNotas + nota;
-        }
-        double promedio = sumaNotas / 4;
-        System.out.println("El promedio final del empleado es: " + promedio);
+        double[] precios = {1500.50, 2300.0, 850.0, 4100.20};
+        System.out.println("El precio del tercer producto es: $" + precios[2]);
 
         }
 }
