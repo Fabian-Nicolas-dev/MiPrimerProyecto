@@ -4,18 +4,12 @@ public class DesafioControl {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
+        System.out.println("¿De qué número querés ver la tabla de multiplicar?: ");
 
-        double totalFactura = 0.0;
-        System.out.println("Ingrese el precio del producto (o marque 0 para terminar): ");
+        int numeroTabla = teclado.nextInt();
 
-        double precio = teclado.nextDouble();
-
-        while (precio > 0) {
-            totalFactura = totalFactura + precio;
-            System.out.println("Ingrese el precio del próximo producto (o 0 para terminar): ");
-            precio = teclado.nextDouble();
-
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(numeroTabla + " x " + i + " = " + (numeroTabla * i));
         }
-        System.out.println("El total de su compra es: $" + totalFactura);
     }
 }
