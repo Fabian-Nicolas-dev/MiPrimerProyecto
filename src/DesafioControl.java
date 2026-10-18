@@ -6,12 +6,14 @@ public class DesafioControl {
 
         Scanner teclado = new Scanner(System.in);
 
-        String[] equipo = {"Fabián", "Carlos", "Ana"};
+        String[] listaNegra = {"Juan", "Hacker99", "Pedro", "Agustina"};
+        String usuarioIngresando = "Hacker99";
 
-                for (int i = 0; i <= 2; i++ ) {
-                    System.out.println("Programador contratado: " + i + equipo[i]);
-
-                }
+        for (int i = 0; i <= 3; i++) {
+            if (listaNegra[i].equals(usuarioIngresando)) {
+                System.out.println("¡ALERTA DE SEGURIDAD! Usuario bloqueado detectado en el cajón " + i);
+            }
+        }
 
         }
 }
