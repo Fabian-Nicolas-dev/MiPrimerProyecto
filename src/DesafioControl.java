@@ -4,28 +4,14 @@ import java.util.Scanner;
 public class DesafioControl {
     public static void main(String[] args) {
 
-        Auto miAuto = new Auto();
+        CuentaBancaria miCuenta = new CuentaBancaria();
+        miCuenta.titular = "Fabián Nicolás";
+        miCuenta.saldo = 5000.0;
+        miCuenta.tipoCuenta = "Caja de ahorros";
 
-        miAuto.marca = "Fiat";
-        miAuto.modelo = "Cronos";
-        miAuto.anio = 2024;
+        System.out.println("Titular: " + miCuenta.titular + " | Saldo actual: $" + miCuenta.saldo);
 
-        System.out.println("Mi auto es un " + miAuto.marca + " " + miAuto.modelo + " del año " + miAuto.anio);
-
-        Auto elAutoDeMiVieja = new Auto();
-        elAutoDeMiVieja.marca = "Volkswagen";
-        elAutoDeMiVieja.modelo = "Gol";
-        elAutoDeMiVieja.anio = 2018;
-
-        System.out.println("El auto de mi vieja es un " + elAutoDeMiVieja.marca + " " + elAutoDeMiVieja.modelo + " del año " + elAutoDeMiVieja.anio);
-
-
-        Auto miAutaso = new Auto();
-        miAutaso.marca = "Autodeitor";
-        miAutaso.modelo = "Terreneitor";
-        miAutaso.anio = 2150;
-
-        System.out.println("El autaso que tengo es un " + miAutaso.marca + " " + miAutaso.modelo + " del año " + miAutaso.anio);
+        miCuenta.depositar(2500.50);
 
         }
 }
