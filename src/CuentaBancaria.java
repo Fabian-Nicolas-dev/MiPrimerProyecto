@@ -2,6 +2,11 @@ public class CuentaBancaria {
     String titular;
     double saldo;
     String tipoCuenta;
+    public CuentaBancaria(String titularFabrica, double saldoFabrica, String tipoFabrica) {
+        titular = titularFabrica;
+        saldo = saldoFabrica;
+        tipoCuenta = tipoFabrica;
+    }
 
     public void depositar(double monto) {
         saldo = saldo + monto;
