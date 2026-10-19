@@ -6,12 +6,13 @@ public class DesafioControl {
 
         Scanner teclado = new Scanner(System.in);
 
-        String[] listaNegra = {"Juan", "Hacker99", "Pedro", "Agustina"};
-        String usuarioIngresando = "Hacker99";
+        String[] productos = {"Fideos", "Arroz", "Yerba", "Aceite"};
+        double[] precios = {1500.0, 1100.0, 3200.0, 4500.0};
+        String productoBuscado = "Yerba";
 
         for (int i = 0; i <= 3; i++) {
-            if (listaNegra[i].equals(usuarioIngresando)) {
-                System.out.println("¡ALERTA DE SEGURIDAD! Usuario bloqueado detectado en el cajón " + i);
+            if (productos[i].equals(productoBuscado)) {
+                System.out.println("¡Producto encontrado! " + productos[i] + " cuesta: " + precios[i]);
             }
         }
 
