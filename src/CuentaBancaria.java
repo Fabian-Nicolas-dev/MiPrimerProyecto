@@ -9,8 +9,12 @@ public class CuentaBancaria {
 
     }
     public void retirar(double monto) {
-        saldo = saldo - monto;
-        System.out.println("Se retiraron: $" + monto + ". Nuevo saldo: $" + saldo);
+        if (monto <= saldo) {
+            saldo = saldo - monto;
+            System.out.println("Se retiraron: $" + monto + ". Nuevo saldo: $" + saldo);
+        }else {
+            System.out.println("¡Operación rechazada! Fondos insuficientes para retirar: $" + monto);
+        }
 
     }
 }

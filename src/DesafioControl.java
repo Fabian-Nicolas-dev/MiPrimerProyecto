@@ -12,7 +12,7 @@ public class DesafioControl {
         System.out.println("Titular: " + miCuenta.titular + " | Saldo actual: $" + miCuenta.saldo);
 
         miCuenta.depositar(2500.50);
-        miCuenta.retirar(1500.00);
+        miCuenta.retirar(20000.00);
 
         }
 }
