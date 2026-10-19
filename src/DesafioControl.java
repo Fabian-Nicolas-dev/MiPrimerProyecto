@@ -20,5 +20,12 @@ public class DesafioControl {
         System.out.println("El auto de mi vieja es un " + elAutoDeMiVieja.marca + " " + elAutoDeMiVieja.modelo + " del año " + elAutoDeMiVieja.anio);
 
 
+        Auto miAutaso = new Auto();
+        miAutaso.marca = "Autodeitor";
+        miAutaso.modelo = "Terreneitor";
+        miAutaso.anio = 2150;
+
+        System.out.println("El autaso que tengo es un " + miAutaso.marca + " " + miAutaso.modelo + " del año " + miAutaso.anio);
+
         }
 }
