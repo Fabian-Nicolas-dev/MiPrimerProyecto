@@ -4,17 +4,21 @@ import java.util.Scanner;
 public class DesafioControl {
     public static void main(String[] args) {
 
-        Scanner teclado = new Scanner(System.in);
+        Auto miAuto = new Auto();
 
-        String[] productos = {"Fideos", "Arroz", "Yerba", "Aceite"};
-        double[] precios = {1500.0, 1100.0, 3200.0, 4500.0};
-        String productoBuscado = "Yerba";
+        miAuto.marca = "Fiat";
+        miAuto.modelo = "Cronos";
+        miAuto.anio = 2024;
 
-        for (int i = 0; i <= 3; i++) {
-            if (productos[i].equals(productoBuscado)) {
-                System.out.println("¡Producto encontrado! " + productos[i] + " cuesta: " + precios[i]);
-            }
-        }
+        System.out.println("Mi auto es un " + miAuto.marca + " " + miAuto.modelo + " del año " + miAuto.anio);
+
+        Auto elAutoDeMiVieja = new Auto();
+        elAutoDeMiVieja.marca = "Volkswagen";
+        elAutoDeMiVieja.modelo = "Gol";
+        elAutoDeMiVieja.anio = 2018;
+
+        System.out.println("El auto de mi vieja es un " + elAutoDeMiVieja.marca + " " + elAutoDeMiVieja.modelo + " del año " + elAutoDeMiVieja.anio);
+
 
         }
 }
