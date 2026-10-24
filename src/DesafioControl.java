@@ -1,31 +1,34 @@
 import java.nio.file.FileSystemNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList; // ¡1. IMPORTANTE: Acá traemos la librería de la estantería elástica!
 
 public class DesafioControl {
     public static void main(String[] args) {
 
-        CuentaBancaria[] misCuentas = new CuentaBancaria[3];
+        ArrayList<Auto> listaAutos = new ArrayList<>();
 
-        misCuentas[0] = new CuentaBancaria("Carlos", 5500.00, "Caja de ahorros");
-        misCuentas[1] = new CuentaBancaria("Jose", 3200.00,"Caja de ahorros");
-        misCuentas[2] = new CuentaBancaria("Rodrigo", 10200.00,"Caja de ahorros");
+        listaAutos.add(new Auto("Ford","Mustang",2026));
+        listaAutos.add(new Auto("Chevrolet","Camaro",2024));
+        listaAutos.add(new Auto("Autoneitor","Terreneitor",2145));
 
-        double dineroTotalBanco = 0.0;
 
-        System.out.println("--- REPORTE OFICIAL DEL BANCO ---");
+        System.out.println("--- REPORTE OFICIAL DEL BANCO (CON ARRAYLIST) ---");
 
-        for (int i = 0; i < misCuentas.length; i++) {
 
-            dineroTotalBanco = dineroTotalBanco + misCuentas[i].saldo;
-            if (misCuentas[i].saldo < 5000.0) {
-                System.out.println("Alerta: " + misCuentas[i].titular + ". Está corto de saldo: $" + misCuentas[i].saldo);
-            } else {
-                System.out.println( misCuentas[i].titular + ". " + "Saldo actual: $" + misCuentas[i].saldo + ". Tiene las cuentas al día");
-            }
+        for (int i = 0; i < listaAutos.size(); i++) {
+            Auto autoActual = listaAutos.get(i);
+
+            System.out.println("Auto en casillero " + i + ": " + autoActual.marca + " " + autoActual.modelo);
 
         }
-        System.out.println("-----------------------------------");
-        System.out.println("Dinero total guardado en el banco: $" + dineroTotalBanco);
+        listaAutos.remove(1);
+        System.out.println("--- AUTOS DESPUÉS DE LA VENTA ---");
+
+        for (int i = 0; i < listaAutos.size(); i++) {
+            Auto autoActual1 = listaAutos.get(i);
+
+            System.out.println("Auto en casillero " + i + ": " + autoActual1.marca + " " + autoActual1.modelo);
 
         }
+    }
 }
