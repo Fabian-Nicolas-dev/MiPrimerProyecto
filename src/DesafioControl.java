@@ -10,19 +10,25 @@ public class DesafioControl {
         listaAutos.add(new Auto("Ford","Mustang",2026));
         listaAutos.add(new Auto("Chevrolet","Camaro",2024));
         listaAutos.add(new Auto("Autoneitor","Terreneitor",2145));
+        listaAutos.add(new Auto("Toyota", "Hilux", 2025));
 
 
-        System.out.println("--- REPORTE OFICIAL DEL BANCO (CON ARRAYLIST) ---");
+        System.out.println("--- REPORTE DE AUTOS (CON ARRAYLIST) ---");
 
 
         for (int i = 0; i < listaAutos.size(); i++) {
             Auto autoActual = listaAutos.get(i);
 
-            System.out.println("Auto en casillero " + i + ": " + autoActual.marca + " " + autoActual.modelo);
+            if (autoActual.anio >= 2024) {
+                System.out.println("Modelo reciente: " + autoActual.marca + " " + autoActual.modelo + " " + autoActual.anio);
+            } else {
+                System.out.println("Modelo clásico: " + autoActual.marca + " " + autoActual.modelo + " " + autoActual.anio);
+            }
+
 
         }
-        listaAutos.remove(1);
-        System.out.println("--- AUTOS DESPUÉS DE LA VENTA ---");
+        listaAutos.remove(0);
+        System.out.println("--- STOCK ACTUALIZADO ---");
 
         for (int i = 0; i < listaAutos.size(); i++) {
             Auto autoActual1 = listaAutos.get(i);
