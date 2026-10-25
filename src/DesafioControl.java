@@ -5,36 +5,22 @@ import java.util.ArrayList; // ¡1. IMPORTANTE: Acá traemos la librería de la 
 public class DesafioControl {
     public static void main(String[] args) {
 
-        ArrayList<Auto> listaAutos = new ArrayList<>();
+        // 1. Creamos la Concesionaria
+        Concesionaria miAgencia = new Concesionaria("Autos del Sur S.A.");
 
-        listaAutos.add(new Auto("Ford","Mustang",2026));
-        listaAutos.add(new Auto("Chevrolet","Camaro",2024));
-        listaAutos.add(new Auto("Autoneitor","Terreneitor",2145));
-        listaAutos.add(new Auto("Toyota", "Hilux", 2025));
+        // 2. Creamos los autos por separado
+        Auto auto1 = new Auto("Ford", "Mustang", 2026);
+        Auto auto2 = new Auto("Chevrolet", "Camaro", 2024);
+        Auto auto3 = new Auto("Autoneitor", "Terreneitor", 2145);
 
+        // 3. Le decimos a la concesionaria que guarde los autos usando sus propios métodos
+        miAgencia.agregarAuto(auto1);
+        miAgencia.agregarAuto(auto2);
+        miAgencia.agregarAuto(auto3);
 
-        System.out.println("--- REPORTE DE AUTOS (CON ARRAYLIST) ---");
+        System.out.println(""); // Un renglón en blanco para separar
 
-
-        for (int i = 0; i < listaAutos.size(); i++) {
-            Auto autoActual = listaAutos.get(i);
-
-            if (autoActual.anio >= 2024) {
-                System.out.println("Modelo reciente: " + autoActual.marca + " " + autoActual.modelo + " " + autoActual.anio);
-            } else {
-                System.out.println("Modelo clásico: " + autoActual.marca + " " + autoActual.modelo + " " + autoActual.anio);
-            }
-
-
-        }
-        listaAutos.remove(0);
-        System.out.println("--- STOCK ACTUALIZADO ---");
-
-        for (int i = 0; i < listaAutos.size(); i++) {
-            Auto autoActual1 = listaAutos.get(i);
-
-            System.out.println("Auto en casillero " + i + ": " + autoActual1.marca + " " + autoActual1.modelo);
-
-        }
+        // 4. Le pedimos a la concesionaria que muestre su inventario
+        miAgencia.mostrarInventario();
     }
 }
