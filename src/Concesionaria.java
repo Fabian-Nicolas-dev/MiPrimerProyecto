@@ -27,5 +27,24 @@ import java.util.ArrayList;
             }
             System.out.println("==================================================");
         }
-    }
 
+        // Método para buscar un auto por su marca
+        public void buscarAutoPorMarca(String marcaBuscada) {
+            boolean encontrado = false;
+
+            for (int i = 0; i < listaAutos.size(); i++) {
+                Auto autoActual = listaAutos.get(i);
+
+                // Comparamos la marca del auto actual con la que buscamos
+                // (Usamos .equalsIgnoreCase para que no importe si escriben en mayúscula o minúscula)
+                if (autoActual.getMarca().equalsIgnoreCase(marcaBuscada)) {
+                    System.out.println("¡Encontrado! Tenemos stock de: " + autoActual.getMarca() + " " + autoActual.getModelo() + " (" + autoActual.getAnio() + ")");
+                    encontrado = true;
+                }
+            }
+
+            if (!encontrado) {
+                System.out.println("No se encontró ningún auto de la marca: " + marcaBuscada);
+            }
+        }
+    }

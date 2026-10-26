@@ -22,5 +22,11 @@ public class DesafioControl {
 
         // 4. Le pedimos a la concesionaria que muestre su inventario
         miAgencia.mostrarInventario();
+
+        // Probamos si la agencia tiene un Ford
+        miAgencia.buscarAutoPorMarca("Ford");
+
+        // Probamos con una marca que no tengamos
+        miAgencia.buscarAutoPorMarca("Ferrari");
     }
 }
