@@ -1,50 +1,73 @@
 import java.util.ArrayList;
 
-    public class Concesionaria {
+public class Concesionaria {
+    private String nombre;
+    // 1. La lista ahora es de VEHICULOS (acepta autos, motos y lo que venga)
+    private ArrayList<Vehiculo> listaVehiculos;
 
-        // Atributos de la concesionaria
-        String nombre;
-        ArrayList<Auto> listaAutos; // ¡Mirá esto! Una lista de objetos Auto adentro de otra clase
+    public Concesionaria(String nombre) {
+        this.nombre = nombre;
+        this.listaVehiculos = new ArrayList<>();
+    }
 
-        // Constructor: cuando nace la concesionaria, le ponemos nombre y le creamos la estantería vacía
-        public Concesionaria(String nombreConcesionaria) {
-            this.nombre = nombreConcesionaria;
-            this.listaAutos = new ArrayList<>();
-        }
+    // Método para agregar cualquier vehículo (Auto o Moto)
+    public void agregarVehiculo(Vehiculo vehiculo) {
+        listaVehiculos.add(vehiculo);
+    }
 
-        // Metodo para agregar un auto a su propia lista
-        public void agregarAuto(Auto unAuto) {
-            listaAutos.add(unAuto);
-            System.out.println("Se agregó con éxito el auto: " + unAuto.getMarca() + " " + unAuto.getModelo());
-        }
+    // Mostrar inventario con superpoderes de polimorfismo
+    public void mostrarInventario() {
+        System.out.println("=== INVENTARIO DE LA CONCESIONARIA: " + nombre + " ===");
 
-        // Metodo para mostrar todo su stock
-        public void mostrarInventario() {
-            System.out.println("=== INVENTARIO DE LA CONCESIONARIA: " + nombre + " ===");
-            for (int i = 0; i < listaAutos.size(); i++) {
-                Auto autoActual = listaAutos.get(i);
-                System.out.println(i + ". " + autoActual.getMarca() + " " + autoActual.getModelo() + " (" + autoActual.getAnio() + ")");
+        for (int i = 0; i < listaVehiculos.size(); i++) {
+            Vehiculo v = listaVehiculos.get(i);
+
+            // Mostramos los datos generales del Padre
+            System.out.print(i + ". " + v.getMarca() + " " + v.getModelo() + " (" + v.getAnio() + ")");
+
+            // ¡Magia técnica! Preguntamos qué tipo de vehículo es para mostrar su detalle exclusivo
+            if (v instanceof Auto) {
+                Auto autoCasting = (Auto) v; // Convertimos temporalmente el vehículo en Auto
+                System.out.println(" - Puertas: " + autoCasting.getCantidadPuertas());
+            } else if (v instanceof Moto) {
+                Moto motoCasting = (Moto) v; // Convertimos temporalmente el vehículo en Moto
+                System.out.println(" - Cilindrada: " + motoCasting.getCilindradas() + "cc");
+            } else if (v instanceof Camioneta) {
+                Camioneta camionetaCasting = (Camioneta) v;
+                System.out.println(" - Carga: " + camionetaCasting.getCapacidadCarga() + "kg");
             }
-            System.out.println("==================================================");
         }
+        System.out.println("==================================================");
+    }
 
-        // Método para buscar un auto por su marca
-        public void buscarAutoPorMarca(String marcaBuscada) {
-            boolean encontrado = false;
-
-            for (int i = 0; i < listaAutos.size(); i++) {
-                Auto autoActual = listaAutos.get(i);
-
-                // Comparamos la marca del auto actual con la que buscamos
-                // (Usamos .equalsIgnoreCase para que no importe si escriben en mayúscula o minúscula)
-                if (autoActual.getMarca().equalsIgnoreCase(marcaBuscada)) {
-                    System.out.println("¡Encontrado! Tenemos stock de: " + autoActual.getMarca() + " " + autoActual.getModelo() + " (" + autoActual.getAnio() + ")");
-                    encontrado = true;
-                }
+    // Método de búsqueda por marca adaptado para Vehiculos
+    public void buscarVehiculoPorMarca(String marcaBuscada) {
+        boolean encontrado = false;
+        for (Vehiculo v : listaVehiculos) {
+            if (v.getMarca().equalsIgnoreCase(marcaBuscada)) {
+                System.out.println("¡Encontrado! Tenemos stock de: " + v.getMarca() + " " + v.getModelo() + " (" + v.getAnio() + ")");
+                encontrado = true;
             }
-
-            if (!encontrado) {
-                System.out.println("No se encontró ningún auto de la marca: " + marcaBuscada);
-            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontró ningún vehículo de la marca: " + marcaBuscada);
         }
     }
+
+    // Método de eliminación por marca adaptado al revés para Vehiculos
+    public void eliminarVehiculoPorMarca(String marcaAEliminar) {
+        boolean eliminado = false;
+        for (int i = listaVehiculos.size() - 1; i >= 0; i--) {
+            Vehiculo v = listaVehiculos.get(i);
+            if (v.getMarca().equalsIgnoreCase(marcaAEliminar)) {
+                System.out.println("¡Vendido! Eliminando del stock: " + v.getMarca() + " " + v.getModelo());
+                listaVehiculos.remove(i);
+                eliminado = true;
+                break;
+            }
+        }
+        if (!eliminado) {
+            System.out.println("No se pudo eliminar: No hay vehículos de la marca " + marcaAEliminar);
+        }
+    }
+}

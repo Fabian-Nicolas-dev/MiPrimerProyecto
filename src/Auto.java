@@ -1,36 +1,18 @@
-public class Auto {
+    // La palabra "extends Vehiculo" significa que Auto hereda todo lo del Padre
+    public class Auto extends Vehiculo {
 
-    // Atributos privados (la caja fuerte)
-    private String marca;
-    private String modelo;
-    private int anio;
+        // Atributo exclusivo de los autos (por ejemplo, cantidad de puertas)
+        private int cantidadPuertas;
 
-    // Constructor
-    public Auto(String marca, String modelo, int anio) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.anio = anio;
-    }
-
-    // GETTERS (Para leer los datos de forma segura)
-    public String getMarca() {
-        return this.marca;
-    }
-
-    public String getModelo() {
-        return this.modelo;
-    }
-
-    public int getAnio() {
-        return this.anio;
-    }
-
-    // SETTERS (Para modificar el año con validación)
-    public void setAnio(int nuevoAnio) {
-        if (nuevoAnio > 1886) {
-            this.anio = nuevoAnio;
-        } else {
-            System.out.println("Error: ¡Año inválido!");
+        // Constructor del Auto
+        public Auto(String marca, String modelo, int anio, int cantidadPuertas) {
+            super(marca, modelo, anio); // "super" llama al constructor de Vehiculo (el padre)
+            this.cantidadPuertas = cantidadPuertas;
         }
-    }
+
+        // Getter exclusivo del auto
+        public int getCantidadPuertas() {
+            return cantidadPuertas;
+        }
+
 }
