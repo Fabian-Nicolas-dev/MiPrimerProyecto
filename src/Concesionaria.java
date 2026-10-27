@@ -1,49 +1,51 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Concesionaria {
     private String nombre;
-    // 1. La lista ahora es de VEHICULOS (acepta autos, motos y lo que venga)
-    private ArrayList<Vehiculo> listaVehiculos;
+
+    // El HashMap guarda la Patente (String) como Clave y el Vehiculo como Valor
+    private HashMap<String, Vehiculo> stockVehiculos;
 
     public Concesionaria(String nombre) {
         this.nombre = nombre;
-        this.listaVehiculos = new ArrayList<>();
+        this.stockVehiculos = new HashMap<>();
     }
 
-    // Método para agregar cualquier vehículo (Auto o Moto)
+    // Método para agregar vehículos usando .put()
     public void agregarVehiculo(Vehiculo vehiculo) {
-        listaVehiculos.add(vehiculo);
+        stockVehiculos.put(vehiculo.getPatente(), vehiculo);
+        System.out.println("Vehículo registrado con patente: " + vehiculo.getPatente());
     }
 
-    // Mostrar inventario con superpoderes de polimorfismo
+    // Mostrar inventario adaptado al HashMap usando .values()
     public void mostrarInventario() {
         System.out.println("=== INVENTARIO DE LA CONCESIONARIA: " + nombre + " ===");
 
-        for (int i = 0; i < listaVehiculos.size(); i++) {
-            Vehiculo v = listaVehiculos.get(i);
+        int contador = 0; // Usamos un contador visual para numerar en pantalla
+        for (Vehiculo v : stockVehiculos.values()) {
+            System.out.print(contador + ". " + v.getMarca() + " " + v.getModelo() + " (" + v.getAnio() + ") - Patente: " + v.getPatente());
 
-            // Mostramos los datos generales del Padre
-            System.out.print(i + ". " + v.getMarca() + " " + v.getModelo() + " (" + v.getAnio() + ")");
-
-            // ¡Magia técnica! Preguntamos qué tipo de vehículo es para mostrar su detalle exclusivo
             if (v instanceof Auto) {
-                Auto autoCasting = (Auto) v; // Convertimos temporalmente el vehículo en Auto
+                Auto autoCasting = (Auto) v;
                 System.out.println(" - Puertas: " + autoCasting.getCantidadPuertas());
             } else if (v instanceof Moto) {
-                Moto motoCasting = (Moto) v; // Convertimos temporalmente el vehículo en Moto
+                Moto motoCasting = (Moto) v;
                 System.out.println(" - Cilindrada: " + motoCasting.getCilindradas() + "cc");
             } else if (v instanceof Camioneta) {
                 Camioneta camionetaCasting = (Camioneta) v;
                 System.out.println(" - Carga: " + camionetaCasting.getCapacidadCarga() + "kg");
             }
+            contador++;
         }
         System.out.println("==================================================");
     }
 
-    // Método de búsqueda por marca adaptado para Vehiculos
+    // Método de búsqueda por marca adaptado con .values()
     public void buscarVehiculoPorMarca(String marcaBuscada) {
         boolean encontrado = false;
-        for (Vehiculo v : listaVehiculos) {
+
+        // Usamos .values() para poder recorrer los vehículos del mapa
+        for (Vehiculo v : stockVehiculos.values()) {
             if (v.getMarca().equalsIgnoreCase(marcaBuscada)) {
                 System.out.println("¡Encontrado! Tenemos stock de: " + v.getMarca() + " " + v.getModelo() + " (" + v.getAnio() + ")");
                 encontrado = true;
@@ -54,20 +56,33 @@ public class Concesionaria {
         }
     }
 
-    // Método de eliminación por marca adaptado al revés para Vehiculos
+    // Método de eliminación adaptado para buscar la patente y borrar del mapa
     public void eliminarVehiculoPorMarca(String marcaAEliminar) {
-        boolean eliminado = false;
-        for (int i = listaVehiculos.size() - 1; i >= 0; i--) {
-            Vehiculo v = listaVehiculos.get(i);
+        String patenteAEliminar = null;
+
+        for (Vehiculo v : stockVehiculos.values()) {
             if (v.getMarca().equalsIgnoreCase(marcaAEliminar)) {
-                System.out.println("¡Vendido! Eliminando del stock: " + v.getMarca() + " " + v.getModelo());
-                listaVehiculos.remove(i);
-                eliminado = true;
-                break;
+                patenteAEliminar = v.getPatente();
+                break; // Encontramos el primero y salimos del bucle
             }
         }
-        if (!eliminado) {
+
+        if (patenteAEliminar != null) {
+            Vehiculo eliminado = stockVehiculos.remove(patenteAEliminar); // .remove() borra usando la clave
+            System.out.println("¡Vendido! Eliminando del stock: " + eliminado.getMarca() + " " + eliminado.getModelo());
+        } else {
             System.out.println("No se pudo eliminar: No hay vehículos de la marca " + marcaAEliminar);
+        }
+    }
+
+    // Búsqueda ultrarrápida por Patente (La gran ventaja del HashMap)
+    public void buscadorPorPatente(String patenteBuscada) {
+        Vehiculo v = stockVehiculos.get(patenteBuscada);
+
+        if (v != null) {
+            System.out.println("¡Encontrado al instante! Es un " + v.getMarca() + " " + v.getModelo() + " (Patente: " + v.getPatente() + ")");
+        } else {
+            System.out.println("No existe ningún vehículo registrado con la patente: " + patenteBuscada);
         }
     }
 }

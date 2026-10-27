@@ -5,8 +5,8 @@
         private int cantidadPuertas;
 
         // Constructor del Auto
-        public Auto(String marca, String modelo, int anio, int cantidadPuertas) {
-            super(marca, modelo, anio); // "super" llama al constructor de Vehiculo (el padre)
+        public Auto(String marca, String modelo, int anio, int cantidadPuertas, String patente) {
+            super(marca, modelo, anio, patente); // "super" llama al constructor de Vehiculo (el padre)
             this.cantidadPuertas = cantidadPuertas;
         }
 
